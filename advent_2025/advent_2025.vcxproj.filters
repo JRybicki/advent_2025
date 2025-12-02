@@ -16,6 +16,9 @@
     <Filter Include="Source Files\Code Solutions">
       <UniqueIdentifier>{a367b97a-23f8-49da-a0cf-7623834f3d49}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Inputs">
+      <UniqueIdentifier>{559d9341-91f3-41dd-b5f5-dea80f92b623}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="advent_2025.cpp">
@@ -26,7 +29,15 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="solution_includes.hpp">
+    <Text Include="inputs\day1_example.txt">
+      <Filter>Inputs</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\solution_includes.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\common.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
