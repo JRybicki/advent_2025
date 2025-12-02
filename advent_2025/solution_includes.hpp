@@ -1,0 +1,7 @@
+// SOLUTION_INCLUDES.hpp
+#ifndef SOLUTION_INCLUDES
+#define SOLUTION_INCLUDES
+
+void day_1_main();
+
+#endif // SOLUTION_INCLUDES
