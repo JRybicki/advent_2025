@@ -4,10 +4,11 @@
 
 #include <fstream>
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 
-std::vector<std::string> ReadFile(std::string filename, bool print_lines) {
+static std::vector<std::string> ReadFile(std::string filename, bool print_lines) {
 
     std::vector<std::string> file_contents;
     std::ifstream input_file(filename);
@@ -35,6 +36,27 @@ std::vector<std::string> ReadFile(std::string filename, bool print_lines) {
         }
     }
     return file_contents;
+}
+
+static std::vector<std::string> ReadCSV(std::string filename, bool print_csv_values) {
+
+    std::vector<std::string> csv_values;
+
+    // Assume there's only a single line for now
+    std::string csv_line = ReadFile(filename, false).back();
+
+    std::vector<std::string> tokens;
+    std::stringstream ss(csv_line);
+    std::string token;
+
+    while (std::getline(ss, token, ',')) {
+        if (print_csv_values) {
+            std::cout << token << std::endl;
+        }
+        csv_values.push_back(token);
+    }
+
+    return csv_values;
 }
 
 #endif // SOLUTION_INCLUDES

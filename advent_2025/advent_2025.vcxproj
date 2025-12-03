@@ -130,9 +130,13 @@
   <ItemGroup>
     <ClCompile Include="advent_2025.cpp" />
     <ClCompile Include="day1.cpp" />
+    <ClCompile Include="day2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="inputs\day1_example.txt" />
+    <Text Include="inputs\day1_puzzle.txt" />
+    <Text Include="inputs\day2_example.txt" />
+    <Text Include="inputs\day2_puzzle.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\common.hpp" />

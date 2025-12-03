@@ -27,9 +27,21 @@
     <ClCompile Include="day1.cpp">
       <Filter>Source Files\Code Solutions</Filter>
     </ClCompile>
+    <ClCompile Include="day2.cpp">
+      <Filter>Source Files\Code Solutions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="inputs\day1_example.txt">
+      <Filter>Inputs</Filter>
+    </Text>
+    <Text Include="inputs\day1_puzzle.txt">
+      <Filter>Inputs</Filter>
+    </Text>
+    <Text Include="inputs\day2_example.txt">
+      <Filter>Inputs</Filter>
+    </Text>
+    <Text Include="inputs\day2_puzzle.txt">
       <Filter>Inputs</Filter>
     </Text>
   </ItemGroup>

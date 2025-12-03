@@ -3,6 +3,6 @@
 
 int main()
 {
-    day1_main();
-
+    //day1_main();
+    day2_main();
 }
