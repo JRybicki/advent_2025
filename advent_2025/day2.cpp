@@ -50,6 +50,7 @@ long long int day2_part1_function(std::string filename) {
     return invalid_id_sum;
 }
 
+// This code is so incredibly slow, it's obvious the solution was not to use strings here lol
 long long int day2_part2_function(std::string filename) {
     long long int invalid_id_sum = 0;
     char range_delimiter = '-';
@@ -57,9 +58,9 @@ long long int day2_part2_function(std::string filename) {
     std::vector<std::string> id_ranges = ReadCSV(filename, false);
 
     for (std::string range : id_ranges) {
-// #ifdef DEBUG_PRINT
+#ifdef DEBUG_PRINT
         std::cout << range << std::endl;
-// #endif DEBUG_PRINT
+#endif DEBUG_PRINT
         unsigned int range_delimiter_pos = range.find(range_delimiter);
         long long int start_range = std::atoll(range.substr(0, range_delimiter_pos).c_str());
         long long int end_range = std::atoll(range.substr(range_delimiter_pos + 1, range.size()).c_str());
@@ -83,29 +84,40 @@ long long int day2_part2_function(std::string filename) {
                     std::string id_substr = id_str.substr(0, id_index + 1);
                     //std::cout << "id_substr " << id_substr << std::endl;
 
-                    // How many more substrings can there be
-                    unsigned int substr_count = id_str.size() / id_substr.size();
-                    //std::cout << "substr_count " << substr_count << std::endl;
+                    int size = id_str.size();
+                    int remainder = id_str.size() % 2;
 
-                    for (unsigned int i = 0; i < substr_count; i++) {
-                        std::string next_id = id_str.substr(id_substr.size() * i, id_substr.size());
-                        //std::cout << "next_id " << next_id << std::endl;
+                    // if the id value has to be the right number of digits to repeat
+                    // ex 11 can't repeat into 11112 but it can in 111111
+                    if (id_str.size() % id_substr.size() != 0) {
+                        invalid_id = false;
+                    } else {
+                        // How many more substrings can there be
+                        unsigned int substr_count = id_str.size() / id_substr.size();
+                        //std::cout << "substr_count " << substr_count << std::endl;
 
-                        // check if this is a repating id
-                        if (id_substr.compare(next_id) != 0) {
-                            invalid_id = false;
+                        for (unsigned int i = 0; i < substr_count; i++) {
+                            std::string next_id = id_str.substr(id_substr.size() * i, id_substr.size());
+                            //std::cout << "next_id " << next_id << std::endl;
+
+                            // check if this is a repating id
+                            if (id_substr.compare(next_id) != 0) {
+                                invalid_id = false;
+                            }
                         }
-                    }
 
-                    if (invalid_id) {
-                        // only need to check this number once so break the loop
-                        break;
+                        if (invalid_id) {
+                            // only need to check this number once so break the loop
+                            break;
+                        }
                     }
                 }
             }
 
             if (invalid_id) {
+#ifdef DEBUG_PRINT
                 std::cout << "invalid id " << id_value << std::endl;
+#endif DEBUG_PRINT
                 invalid_id_sum += id_value;
             }
         }
@@ -125,9 +137,10 @@ long long int day2_part2_function(std::string filename) {
 // only looking for ids with silly digits (ex 55, 6464, 123123)
 // none of the numbers have leading zeros (ex 0101)
 void day2_main() {
-    //std::cout << "Day 2 part 1 example invalid id sum = " << day2_part1_function("inputs/day2_example.txt") << std::endl;
-    //std::cout << "Day 2 part 1 puzzle invalid id sum = " << day2_part1_function("inputs/day2_puzzle.txt") << std::endl;
+    std::cout << "Day 2 part 1 example invalid id sum = " << day2_part1_function("inputs/day2_example.txt") << std::endl;
+    std::cout << "Day 2 part 1 puzzle invalid id sum = " << day2_part1_function("inputs/day2_puzzle.txt") << std::endl;
 
-    day2_part2_function("inputs/day2_example.txt");
+    std::cout << "Day 2 part 2 example invalid id sum = " <<  day2_part2_function("inputs/day2_example.txt") << std::endl;
+    std::cout << "Day 2 part 2 puzzle invalid id sum = " <<  day2_part2_function("inputs/day2_puzzle.txt") << std::endl;
 
 }
