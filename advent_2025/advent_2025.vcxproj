@@ -131,6 +131,7 @@
     <ClCompile Include="advent_2025.cpp" />
     <ClCompile Include="day1.cpp" />
     <ClCompile Include="day2.cpp" />
+    <ClCompile Include="day3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="inputs\day1_example.txt" />

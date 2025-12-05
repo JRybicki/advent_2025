@@ -4,6 +4,8 @@
 #include <iostream>
 #include <vector>
 
+
+// #define DEBUG_PRINT
 // Test data -
 // The dial starts by pointing at 50.
 // The dial is rotated L68 to point at 82.
@@ -19,7 +21,7 @@
 // The dial is rotated L82 to point at 32.
 const int kdial_maximum = 99;
 const int kdial_minimum = 0;
-int day1_function(std::string filename) {
+int day1_part1_function(std::string filename) {
     std::vector<std::string> file_lines = ReadFile(filename, false);
 
     int dial_position = 50;
@@ -68,6 +70,53 @@ int day1_function(std::string filename) {
     return password;
 }
 
+// 2080 is too low
+// 5882 is too high
+// 5828 is too low
+int day1_part2_function(std::string filename) {
+    std::vector<std::string> file_lines = ReadFile(filename, false);
+
+    int dial_position = 50;
+    int new_position = 0;
+    unsigned int password = 0;
+
+    // Loop over the lines
+    int dial_modifier = 0;
+    for (std::string line : file_lines) {
+        dial_modifier = std::atoi(line.c_str() + 1);
+
+        password += dial_modifier / 100;
+        dial_modifier = dial_modifier % 100;
+        if (line[0] == 'L') {
+            dial_modifier = dial_modifier * -1;
+        }
+
+        new_position = dial_position + dial_modifier;
+        if (new_position > 99) {
+            new_position -= 100;
+            password++;
+        }
+        else if (new_position == 0) {
+            password++;
+        }
+        else if (new_position < 0 && dial_position != 0) {
+            new_position += 100;
+            password++;
+        }
+        dial_position = (new_position + 100) % 100;// this is so that -1%100 = 99
+
+
+#ifdef DEBUG_PRINT
+        std::cout << "dial_position " << dial_position << std::endl;
+#endif DEBUG_PRINT
+
+    }
+#ifdef DEBUG_PRINT
+    std::cout << "password " << password << std::endl;
+#endif DEBUG_PRINT
+    return password;
+}
+
 // dial with number 0-99
 // sequence of rotations, L (down) R (up) then a number
 // rotate goes back to 0
@@ -76,6 +125,9 @@ int day1_function(std::string filename) {
 // safe is a decoy
 // password - number of times dial is left pointing at 0 after each rotation
 void day1_main() {
-    std::cout << "Day 1 example password = " << day1_function("inputs/day1_example.txt") << std::endl;
-    std::cout << "Day 1 puzzle password = " << day1_function("inputs/day1_puzzle.txt") << std::endl;
+    std::cout << "Day 1 part 1 example password = " << day1_part1_function("inputs/day1_example.txt") << std::endl;
+    std::cout << "Day 1 part 1 puzzle password = " << day1_part1_function("inputs/day1_puzzle.txt") << std::endl;
+
+    std::cout << "Day 1 part 2 example password = " << day1_part2_function("inputs/day1_example.txt") << std::endl;
+    std::cout << "Day 1 part 2 puzzlle password = " << day1_part2_function("inputs/day1_puzzle.txt") << std::endl;
 }

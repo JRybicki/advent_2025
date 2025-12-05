@@ -30,6 +30,9 @@
     <ClCompile Include="day2.cpp">
       <Filter>Source Files\Code Solutions</Filter>
     </ClCompile>
+    <ClCompile Include="day3.cpp">
+      <Filter>Source Files\Code Solutions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="inputs\day1_example.txt">
