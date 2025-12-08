@@ -47,6 +47,12 @@
     <Text Include="inputs\day2_puzzle.txt">
       <Filter>Inputs</Filter>
     </Text>
+    <Text Include="inputs\day3_example.txt">
+      <Filter>Inputs</Filter>
+    </Text>
+    <Text Include="inputs\day3_puzzle.txt">
+      <Filter>Inputs</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\solution_includes.hpp">
