@@ -45,9 +45,6 @@ unsigned int day3_part1_function(std::string filename) {
         }
 
 
-        //std::cout << "max_battery_voltage " << max_battery_voltage << " max_battery_index " << max_battery_index << std::endl;
-        //std::cout << "second_battery_voltage " << second_battery_voltage << std::endl;
-
         std::string voltage_str = { max_battery_voltage, second_battery_voltage };
         battery_joltage = std::atoi(voltage_str.c_str());
 
@@ -57,16 +54,55 @@ unsigned int day3_part1_function(std::string filename) {
     return total_joltage;
 }
 
+// 234234234234278
+std::string FindLargestNumber(const std::string line) {
+    std::string final_number;
 
-void day3_part2_function(std::string filename) {
+    unsigned int battery_index = 0;
 
+    while (final_number.size() < 12) {
+
+        char max_battery_voltage = 0;
+
+        // we need to find the largest number before 12 from the end
+        for (unsigned int index = battery_index; index < line.size() - 11 + final_number.size(); index++) {
+            char voltage = line.at(index);
+            if (voltage > max_battery_voltage) {
+                max_battery_voltage = voltage;
+                battery_index = index;
+            }
+        }
+
+        final_number += max_battery_voltage;
+        battery_index++;
+    }
+
+    return final_number;
+}
+
+// really should use recursion here
+unsigned long long day3_part2_function(std::string filename) {
+    std::vector<std::string> file_lines = ReadFile(filename, false);
+
+    unsigned long long total_joltage = 0;
+
+    for (std::string line : file_lines) {
+        
+
+        std::string blank;
+        unsigned long long battery_voltage = std::atoll(FindLargestNumber(line).c_str());
+
+        total_joltage += battery_voltage;
+    }
+
+    return total_joltage;
 }
 
 
 void day3_main() {
-    std::cout << "Day 2 part 1 example max joltage = " << day3_part1_function("inputs/day3_example.txt") << std::endl;
-    std::cout << "Day 2 part 1 puzzle invalid id sum = " << day3_part1_function("inputs/day3_puzzle.txt") << std::endl;
+    std::cout << "Day 3 part 1 example max joltage = " << day3_part1_function("inputs/day3_example.txt") << std::endl;
+    std::cout << "Day 3 part 1 puzzle invalid id sum = " << day3_part1_function("inputs/day3_puzzle.txt") << std::endl;
 
-    //std::cout << "Day 2 part 2 example invalid id sum = " <<  day3_part2_function("inputs/day2_example.txt") << std::endl;
-    //std::cout << "Day 2 part 2 puzzle invalid id sum = " <<  day3_part2_function("inputs/day2_puzzle.txt") << std::endl;
+    std::cout << "Day 3 part 2 example invalid id sum = " <<  day3_part2_function("inputs/day3_example.txt") << std::endl;
+    std::cout << "Day 3 part 2 puzzle invalid id sum = " <<  day3_part2_function("inputs/day3_puzzle.txt") << std::endl;
 }
