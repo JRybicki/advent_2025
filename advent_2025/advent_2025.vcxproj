@@ -132,6 +132,7 @@
     <ClCompile Include="day1.cpp" />
     <ClCompile Include="day2.cpp" />
     <ClCompile Include="day3.cpp" />
+    <ClCompile Include="day4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="inputs\day1_example.txt" />
@@ -140,6 +141,8 @@
     <Text Include="inputs\day2_puzzle.txt" />
     <Text Include="inputs\day3_example.txt" />
     <Text Include="inputs\day3_puzzle.txt" />
+    <Text Include="inputs\day4_example.txt" />
+    <Text Include="inputs\day4_puzzle.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\common.hpp" />
