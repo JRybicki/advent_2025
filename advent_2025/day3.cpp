@@ -1,10 +1,7 @@
 #include "common.hpp"
 #include "solution_includes.hpp"
 
-#include <algorithm>
-#include <array>
 #include <iostream>
-#include <map>
 #include <vector>
 
 
@@ -101,8 +98,8 @@ unsigned long long day3_part2_function(std::string filename) {
 
 void day3_main() {
     std::cout << "Day 3 part 1 example max joltage = " << day3_part1_function("inputs/day3_example.txt") << std::endl;
-    std::cout << "Day 3 part 1 puzzle invalid id sum = " << day3_part1_function("inputs/day3_puzzle.txt") << std::endl;
+    std::cout << "Day 3 part 1 puzzle max joltage = " << day3_part1_function("inputs/day3_puzzle.txt") << std::endl;
 
-    std::cout << "Day 3 part 2 example invalid id sum = " <<  day3_part2_function("inputs/day3_example.txt") << std::endl;
-    std::cout << "Day 3 part 2 puzzle invalid id sum = " <<  day3_part2_function("inputs/day3_puzzle.txt") << std::endl;
+    std::cout << "Day 3 part 2 example max joltage = " <<  day3_part2_function("inputs/day3_example.txt") << std::endl;
+    std::cout << "Day 3 part 2 puzzle max joltage = " <<  day3_part2_function("inputs/day3_puzzle.txt") << std::endl;
 }
