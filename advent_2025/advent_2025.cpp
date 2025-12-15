@@ -7,5 +7,6 @@ int main()
     //day2_main();
     //day3_main();
     //day4_main();
-    day5_main();
+    //day5_main();
+    day6_main();
 }

@@ -39,6 +39,9 @@
     <ClCompile Include="day5.cpp">
       <Filter>Source Files\Code Solutions</Filter>
     </ClCompile>
+    <ClCompile Include="day6.cpp">
+      <Filter>Source Files\Code Solutions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="inputs\day1_example.txt">
@@ -69,6 +72,12 @@
       <Filter>Inputs</Filter>
     </Text>
     <Text Include="inputs\day5_puzzle.txt">
+      <Filter>Inputs</Filter>
+    </Text>
+    <Text Include="inputs\day6_example.txt">
+      <Filter>Inputs</Filter>
+    </Text>
+    <Text Include="inputs\day6_puzzle.txt">
       <Filter>Inputs</Filter>
     </Text>
   </ItemGroup>
